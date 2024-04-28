@@ -8,15 +8,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createCabin } from "../../services/apiCabins";
 import toast from "react-hot-toast";
 import FormRow from "../../ui/FormRow";
-import PropTypes from "prop-types";
 
-CreateCabinForm.propTypes = {
-  cabinToEdit: PropTypes.object,
-};
-
-function CreateCabinForm({ cabinToEdit }) {
-  const { id: editId, ...editValues } = cabinToEdit;
-
+function CreateCabinForm() {
   const { register, handleSubmit, reset, getValues, formState } = useForm();
   const { errors } = formState;
 
