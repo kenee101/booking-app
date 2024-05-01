@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button from "./Button";
 import Heading from "./Heading";
+import PropTypes from "prop-types";
 
 const StyledConfirmDelete = styled.div`
   width: 40rem;
@@ -20,20 +21,33 @@ const StyledConfirmDelete = styled.div`
   }
 `;
 
-function ConfirmDelete({ resourceName, onConfirm, disabled }) {
+ConfirmDelete.propTypes = {
+  resourceName: PropTypes.any,
+  onConfirm: PropTypes.any,
+  disabled: PropTypes.any,
+  onCloseModal: PropTypes.any,
+};
+
+function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
   return (
     <StyledConfirmDelete>
       <Heading as="h3">Delete {resourceName}</Heading>
       <p>
-        Are you sure you want to delete this {resourceName} permanently? This
+        Are you sure you want to delete this {resourceName}{" "}
+        <span style={{ display: "inline-block" }}>permanently?.</span> This
         action cannot be undone.
       </p>
 
       <div>
-        <Button variation="secondary" disabled={disabled}>
+        <Button
+          variation="secondary"
+          disabled={disabled}
+          onClick={onCloseModal}
+        >
           Cancel
         </Button>
-        <Button variation="danger" disabled={disabled}>
+
+        <Button variation="danger" disabled={disabled} onClick={onConfirm}>
           Delete
         </Button>
       </div>
