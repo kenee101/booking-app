@@ -11,6 +11,7 @@ import DataItem from "../../ui/DataItem";
 import { Flag } from "../../ui/Flag";
 
 import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
+import PropTypes from "prop-types";
 
 const StyledBookingDataBox = styled.section`
   /* Box */
@@ -100,6 +101,10 @@ const Footer = styled.footer`
   color: var(--color-grey-500);
   text-align: right;
 `;
+
+BookingDataBox.propTypes = {
+  booking: PropTypes.any,
+};
 
 // A purely presentational component
 function BookingDataBox({ booking }) {
